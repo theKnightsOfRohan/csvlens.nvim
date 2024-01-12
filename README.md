@@ -4,6 +4,7 @@ A way to easily preview CSV files directly in neovim. Backed by [YS-L/csvlens](h
 
 ## Notes
 
+Requires Neovim version 0.7.0 or greater.
 This plugin depends on [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) as the UI for the previewer.
 
 ## Quickstart
