@@ -1,6 +1,6 @@
 # csvlens.nvim
 
-A way to easily preview CSV files directly in neovim, similar to glow.nvim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
+A way to easily preview CSV files directly in neovim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
 
 ## Notes
 
@@ -29,3 +29,13 @@ This plugin requires you to have [csvlens](https://github.com/YS-L/csvlens) inst
 ## Usage
 
 This plugin is designed to be simple and easy to use. Simply open the csv file that you want to preview, then use the command `:Csvlens` to open a floating window with the preview of the opened file. The keyboard commands are the same as csvlens's defaults.
+
+## Alternatives
+
+[VidocqH/data-viewer.nvim](https://github.com/VidocqH/data-viewer.nvim)
+- This plugin supports sqlite as well
+- However, I don't like how the UI looks. csvlens looks much better to me, which is why I wanted to make this port.
+
+## Credits
+
+The automatic download script was taken from [ellisonleao/glow.nvim](https://github.com/ellisonleao/glow.nvim).
