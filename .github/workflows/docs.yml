@@ -34,6 +34,7 @@ jobs:
       id: check_pr
       uses: actions/github-script@v6
       with:
+        result-encoding: string
         script: |
           const { data } = await github.rest.pulls.list({
             owner: context.repo.owner,
@@ -43,7 +44,6 @@ jobs:
           })
           const result = data.length > 0 ? 'true' : 'false';
           return { result };
-        result-encoding: string
     - name: Create Pull Request
       if: steps.check_pr.outputs.result == 'false'
       id: create_pr
