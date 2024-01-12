@@ -2,33 +2,39 @@ name: Generate Documentation
 
 on:
  push:
-   branches:
-     - main
+  branches:
+    - main
 
 jobs:
  docs:
-   runs-on: ubuntu-latest
-   steps:
-     - uses: actions/checkout@v3
-     - name: panvimdoc
-       uses: kdheepak/panvimdoc@main
-       with:
-         vimdoc: csvlens.nvim
-         version: "Neovim >= 0.7.0"
-         demojify: true
-         treesitter: true
-     - name: Commit changes
-       run: |
-         git config --global user.name 'github-actions[bot]'
-         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-         git add .
-         git commit -m "auto-generate vimdoc" || echo "No changes to commit"
-     - name: Create Pull Request
-       id: create_pr
-       uses: peter-evans/create-pull-request@v3
-       with:
-         token: ${{ secrets.GITHUB_TOKEN }}
-         branch: 'auto/docs'
-         delete-branch: false
-         title: 'auto-generate vimdoc'
-         body: 'Created by Github actions'
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: 'main'
+    - name: Try to fetch and checkout existing branch
+      run: |
+        git fetch origin auto/docs && git checkout auto/docs || echo "Branch does not exist"
+    - name: panvimdoc
+      uses: kdheepak/panvimdoc@main
+      with:
+        vimdoc: csvlens.nvim
+        version: "Neovim >= 0.7.0"
+        demojify: true
+        treesitter: true
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "auto-generate vimdoc" || echo "No changes to commit"
+    - name: Create Pull Request
+      id: create_pr
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'auto/docs'
+        delete-branch: false
+        title: 'auto-generate vimdoc'
+        body: 'Created by Github actions'
