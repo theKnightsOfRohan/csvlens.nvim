@@ -9,7 +9,7 @@ function M.release_file_url()
 
     -- check pre-existence of required programs
     if vim.fn.executable("curl") == 0 or vim.fn.executable("tar") == 0 then
-        vim.err("both curl and tar are required to install csvlens")
+        vim.api.nvim_err_writeln("both curl and tar are required to install csvlens")
         return ""
     end
 
@@ -32,7 +32,7 @@ function M.release_file_url()
     arch = arch_patterns[raw_arch]
 
     if os == nil or arch == nil then
-        vim.err("os not supported or could not be parsed")
+        vim.api.nvim_err_writeln("os not supported or could not be parsed")
         return ""
     end
 
@@ -62,7 +62,7 @@ function M:install_csvlens()
     if vim.fn.filereadable(binary_path) == 1 then
         local success = vim.loop.fs_unlink(binary_path)
         if not success then
-            vim.err("csvlens binary could not be removed!")
+            vim.api.nvim_err_writeln("csvlens binary could not be removed!")
             return
         end
     end
@@ -71,7 +71,7 @@ function M:install_csvlens()
     local callbacks = {
         on_sterr = vim.schedule_wrap(function(_, data, _)
             local out = table.concat(data, "\n")
-            vim.err(out)
+            vim.api.nvim_err_writeln(out)
         end),
         on_exit = vim.schedule_wrap(function()
             vim.fn.system(extract_command)
@@ -79,7 +79,7 @@ function M:install_csvlens()
             if vim.fn.filereadable(output_filename) == 1 then
                 local success = vim.loop.fs_unlink(output_filename)
                 if not success then
-                    vim.err("existing archive could not be removed")
+                    vim.api.nvim_err_writeln("existing archive could not be removed")
                     return
                 end
             end
