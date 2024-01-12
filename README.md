@@ -16,10 +16,7 @@ return {
     dependencies = {
         "akinsho/toggleterm.nvim"
     },
-    config = function()
-        require("toggleterm").setup()
-        require("csvlens").setup()
-    end,
+    config = true,
 }
 ```
 
