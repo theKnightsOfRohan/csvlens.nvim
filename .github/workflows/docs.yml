@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: Generate Vimdoc
 
 on:
   push:
@@ -7,50 +7,20 @@ on:
 
 jobs:
   docs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-    - name: Try to checkout existing branch
-      run: |
-        git fetch origin
-        git checkout auto/docs || echo "Branch does not exist"
-    - name: panvimdoc
-      uses: kdheepak/panvimdoc@main
-      with:
-        vimdoc: csvlens.nvim
-        version: "Neovim >= 0.7.0"
-        demojify: true
-        treesitter: true
-    - name: Commit changes
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
-        git commit -m "auto-generate vimdoc" || echo "No changes to commit"
-    - name: Check if PR exists
-      id: check_pr
-      uses: actions/github-script@v6
-      with:
-        result-encoding: string
-        script: |
-          const { data } = await github.rest.pulls.list({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            state: 'open',
-            head: `${context.repo.owner}:auto/docs`
-          })
-          const result = data.length > 0 ? 'true' : 'false';
-          return { result };
-    - name: Create Pull Request
-      if: steps.check_pr.outputs.result == 'false'
-      id: create_pr
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: 'auto/docs'
-        delete-branch: false
-        title: 'auto-generate vimdoc'
-       body: 'Created by Github actions'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: panvimdoc
+        uses: kdheepak/panvimdoc@main
+        with:
+          vimdoc: glow.nvim
+          version: "Neovim >= 0.8.0"
+          demojify: true
+          treesitter: true
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "auto-generate vimdoc"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
