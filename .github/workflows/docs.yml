@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: docs
+name: Generate Documentation
 
 jobs:
   docs:
