@@ -1,6 +1,6 @@
 # csvlens.nvim
 
-A way to easily preview CSV files directly in neovim, similar to glow.nvim. Backed by [csvlens](https://github.com/YS-L/csvlens).
+A way to easily preview CSV files directly in neovim, similar to glow.nvim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
 
 ## Notes
 
