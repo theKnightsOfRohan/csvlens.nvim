@@ -12,10 +12,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        ref: 'main'
-    - name: Try to fetch and checkout existing branch
+        fetch-depth: 0
+    - name: Try to checkout existing branch
       run: |
-        git fetch origin auto/docs && git checkout auto/docs || echo "Branch does not exist"
+        git fetch origin
+        git checkout auto/docs || echo "Branch does not exist"
     - name: panvimdoc
       uses: kdheepak/panvimdoc@main
       with:
