@@ -20,8 +20,9 @@ A way to easily preview CSV files directly in neovim. Backed by YS-L/csvlens
 
 NOTES                                        *csvlens.nvim-csvlens.nvim-notes*
 
-This plugin depends on toggleterm.nvim
-<https://github.com/akinsho/toggleterm.nvim> as the UI for the previewer.
+Requires Neovim version 0.7.0 or greater. This plugin depends on
+toggleterm.nvim <https://github.com/akinsho/toggleterm.nvim> as the UI for the
+previewer.
 
 
 QUICKSTART                              *csvlens.nvim-csvlens.nvim-quickstart*
@@ -35,10 +36,7 @@ LAZY.NVIM INSTALLATION ~
         dependencies = {
             "akinsho/toggleterm.nvim"
         },
-        config = function()
-            require("toggleterm").setup()
-            require("csvlens").setup()
-        end,
+        config = true,
     }
 <
 
