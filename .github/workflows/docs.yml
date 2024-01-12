@@ -41,7 +41,8 @@ jobs:
             state: 'open',
             head: `${context.repo.owner}:auto/docs`
           })
-          return data.length > 0
+          const result = data.length > 0 ? 'true' : 'false';
+          return { result };
     - name: Create Pull Request
       if: steps.check_pr.outputs.result == 'false'
       id: create_pr
