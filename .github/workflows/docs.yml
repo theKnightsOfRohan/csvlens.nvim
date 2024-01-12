@@ -43,6 +43,7 @@ jobs:
           })
           const result = data.length > 0 ? 'true' : 'false';
           return { result };
+        result-encoding: string
     - name: Create Pull Request
       if: steps.check_pr.outputs.result == 'false'
       id: create_pr
