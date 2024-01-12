@@ -1,12 +1,12 @@
 name: Generate Documentation
 
 on:
- push:
-  branches:
-    - main
+  push:
+    branches:
+      - main
 
 jobs:
- docs:
+  docs:
   runs-on: ubuntu-latest
   steps:
     - name: Checkout
@@ -30,7 +30,20 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
         git commit -m "auto-generate vimdoc" || echo "No changes to commit"
+    - name: Check if PR exists
+      id: check_pr
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { data } = await github.rest.pulls.list({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            head: `${context.repo.owner}:auto/docs`
+          })
+          return data.length > 0
     - name: Create Pull Request
+      if: steps.check_pr.outputs.result == 'false'
       id: create_pr
       uses: peter-evans/create-pull-request@v3
       with:
@@ -38,4 +51,4 @@ jobs:
         branch: 'auto/docs'
         delete-branch: false
         title: 'auto-generate vimdoc'
-        body: 'Created by Github actions'
+       body: 'Created by Github actions'
