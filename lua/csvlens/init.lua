@@ -16,21 +16,6 @@ Csvlens.config = {
     direction = "float",
 }
 
----@param str string the string we are testing
----@param ending string the ending we are testing for
-function Csvlens.ends_with(str, ending)
-    return ending == "" or str:sub(-#ending) == ending
-end
-
----@param cmd string
----@param file string
-function Csvlens.construct_cmd(cmd, file)
-    if not Csvlens.ends_with(file, ".csv") then
-        return nil
-    end
-    return cmd .. " " .. file
-end
-
 Csvlens.verified = false
 
 ---@param config CsvlensConfig
@@ -77,6 +62,21 @@ function Csvlens.open_csv()
         direction = Csvlens.config.direction,
     })
     csvlens:toggle()
+end
+
+---@param str string the string we are testing
+---@param ending string the ending we are testing for
+function Csvlens.ends_with(str, ending)
+    return ending == "" or str:sub(- #ending) == ending
+end
+
+---@param cmd string
+---@param file string
+function Csvlens.construct_cmd(cmd, file)
+    if not Csvlens.ends_with(file, ".csv") then
+        return nil
+    end
+    return cmd .. " " .. file
 end
 
 ---@return boolean installed
