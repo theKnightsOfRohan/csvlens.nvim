@@ -6,7 +6,6 @@ Table of Contents                             *csvlens.nvim-table-of-contents*
 1. csvlens.nvim                                    |csvlens.nvim-csvlens.nvim|
   - Notes                                    |csvlens.nvim-csvlens.nvim-notes|
   - Quickstart                          |csvlens.nvim-csvlens.nvim-quickstart|
-  - Config                                  |csvlens.nvim-csvlens.nvim-config|
   - Usage                                    |csvlens.nvim-csvlens.nvim-usage|
   - Alternatives                      |csvlens.nvim-csvlens.nvim-alternatives|
   - Credits                                |csvlens.nvim-csvlens.nvim-credits|
@@ -41,7 +40,7 @@ LAZY.NVIM INSTALLATION ~
 <
 
 
-CONFIG                                      *csvlens.nvim-csvlens.nvim-config*
+CONFIG ~
 
 This plugin requires you to have csvlens <https://github.com/YS-L/csvlens>
 installed and in your PATH. You can install it automatically with this plugin,
