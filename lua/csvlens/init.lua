@@ -11,7 +11,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 local Csvlens = {}
 
 ---@class CsvlensConfig
----@field direction "vertical" | "horizontal" | "tab" | "float",
+---@field direction string "vertical" | "horizontal" | "tab" | "float",
 Csvlens.config = {
     direction = "float",
 }
