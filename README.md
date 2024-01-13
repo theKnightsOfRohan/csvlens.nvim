@@ -20,7 +20,7 @@ return {
 }
 ```
 
-## Config
+### Config
 
 This plugin requires you to have [csvlens](https://github.com/YS-L/csvlens) installed and in your PATH. You can install it automatically with this plugin, and it will be installed in $HOME/.local/bin, or you could install it using your terminal package manager of choice.
 
