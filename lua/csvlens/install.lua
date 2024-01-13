@@ -47,9 +47,9 @@ function M:install_csvlens()
         return
     end
 
-    local download_command = { "curl", "-sL", "-o", "csvlens.tar.gz", release_url }
-    local extract_command = { "tar", "-zxf", "csvlens.tar.gz", "-C", self.install_path }
-    local output_filename = "csvlens.tar.gz"
+    local download_command = { "curl", "-sL", "-o", "csvlens.tar.xz", release_url }
+    local extract_command = { "tar", "-zxf", "csvlens.tar.xz", "-C", self.install_path }
+    local output_filename = "csvlens.tar.xz"
     ---@diagnostic disable-next-line: missing-parameter
     local binary_path = vim.fn.expand(table.concat({ self.install_path, "csvlens" }, "/"))
 
