@@ -25,49 +25,44 @@ function Csvlens.setup(config)
 
     Csvlens.verified = Csvlens.check_if_installed()
 
-    if not Csvlens.verified then
-        local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
-
-        if install ~= "y" then
-            print("csvlens can be installed at https://github.com/YS-L/csvlens")
-            print("If you have already installed csvlens, please add it to your PATH.")
-            return
-        end
-
-        print("Installing csvlens...")
-        require("csvlens.install"):install_csvlens()
-    end
-
     vim.api.nvim_create_user_command("Csvlens", Csvlens.open_csv, {})
 end
 
 ---@return nil
 function Csvlens.open_csv()
     if not Csvlens.verified then
-        print("csvlens tool is not installed or not in your PATH.")
-        print("Install at https://github.com/YS-L/csvlens")
-        return
-    end
+        local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
 
-    local file_to_open = vim.fn.expand("%:p")
-    local constructed_cmd = Csvlens.construct_cmd("csvlens", file_to_open)
-    if not constructed_cmd then
-        vim.api.nvim_err_writeln("ERROR: " .. file_to_open .. " is not a csv file.")
-        return
-    end
+        if install == "y" then
+            print("Installing csvlens...")
+            require("csvlens.install"):install_csvlens()
+        elseif install ~= "n" then
+            print("csvlens can be installed at https://github.com/YS-L/csvlens")
+            print("If you have already installed csvlens, please add it to your PATH.")
+        else
+            print("Input not recognized.")
+        end
+    else
+        local file_to_open = vim.fn.expand("%:p")
+        local constructed_cmd = Csvlens.construct_cmd("csvlens", file_to_open)
+        if not constructed_cmd then
+            vim.api.nvim_err_writeln("ERROR: " .. file_to_open .. " is not a csv file.")
+            return
+        end
 
-    local csvlens = Terminal:new({
-        cmd = constructed_cmd,
-        close_on_exit = true,
-        direction = Csvlens.config.direction,
-    })
-    csvlens:toggle()
+        local csvlens = Terminal:new({
+            cmd = constructed_cmd,
+            close_on_exit = true,
+            direction = Csvlens.config.direction,
+        })
+        csvlens:toggle()
+    end
 end
 
 ---@param str string the string we are testing
 ---@param ending string the ending we are testing for
 function Csvlens.ends_with(str, ending)
-    return ending == "" or str:sub(- #ending) == ending
+    return ending == "" or str:sub(-#ending) == ending
 end
 
 ---@param cmd string
