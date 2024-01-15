@@ -17,6 +17,9 @@ A way to easily preview CSV files directly in neovim. Backed by YS-L/csvlens
 <https://github.com/YS-L/csvlens>.
 
 
+<https://github.com/theKnightsOfRohan/csvlens.nvim/blob/main/assets/Csvlens_Demo.mov>
+
+
 NOTES                                        *csvlens.nvim-csvlens.nvim-notes*
 
 Requires Neovim version 0.7.0 or greater. This plugin depends on
