@@ -17,4 +17,3 @@ vim.opt.rtp:append(toggleterm_dir)
 
 vim.cmd("runtime plugin/plenary.vim")
 vim.cmd("runtime plugin/toggleterm.vim")
-require("plenary.busted")

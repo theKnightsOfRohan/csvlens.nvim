@@ -1,12 +1,12 @@
 local Terminal = require("toggleterm.terminal").Terminal
 
----@class CsvlensUI
+---@class UI
 ---@field open function
-local CsvlensUI = {}
+local UI = {}
 
 ---@param constructed_cmd string the command to run when opening the terminal
 ---@param config table the configuration for the terminal
-function CsvlensUI.open(constructed_cmd, config)
+function UI.open(constructed_cmd, config)
     local csvlens = Terminal:new({
         cmd = constructed_cmd,
         close_on_exit = true,
@@ -15,4 +15,4 @@ function CsvlensUI.open(constructed_cmd, config)
     csvlens:toggle()
 end
 
-return CsvlensUI
+return UI

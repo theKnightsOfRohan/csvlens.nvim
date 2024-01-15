@@ -16,11 +16,11 @@ end
 ---@return string | nil
 function Utils._construct_cmd(cmd, file, delimiter)
     if delimiter ~= nil then
-        return cmd .. " " .. file .. " -d " .. delimiter
+        return string.format("%s %s -d %s", cmd, file, delimiter)
     elseif Utils._ends_with(file, ".csv") then
-        return cmd .. " " .. file
+        return string.format("%s %s", cmd, file)
     elseif Utils._ends_with(file, ".tsv") then
-        return cmd .. " " .. file .. " -t"
+        return string.format("%s %s -t", cmd, file)
     end
 
     return nil
