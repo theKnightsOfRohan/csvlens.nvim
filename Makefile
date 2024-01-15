@@ -8,7 +8,16 @@ lint:
 
 test:
 	echo "===> Testing"
-	nvim --headless -c "PlenaryBustedDirectory lua/csvlens/tests/"
+	nvim \
+		--headless \
+		--noplugin \
+		-u lua/csvlens/tests/minimal_init.lua \
+		-c "PlenaryBustedDirectory lua/csvlens/tests/ { minimal_init = 'lua/csvlens/tests/minimal_init.lua' }"
+
+clean:
+	echo "===> Cleaning"
+	rm -rf /tmp/toggleterm.nvim 
+	rm -rf /tmp/plenary.nvim
 
 all:
-	make fmt lint test
+	make fmt lint test clean
