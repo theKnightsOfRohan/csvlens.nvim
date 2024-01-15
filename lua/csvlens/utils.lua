@@ -12,11 +12,18 @@ end
 
 ---@param cmd string
 ---@param file string
-function Utils.construct_cmd(cmd, file)
-    if not Utils.ends_with(file, ".csv") then
-        return nil
+---@param delimiter string
+---@return string
+function Utils.construct_cmd(cmd, file, delimiter)
+    if delimiter ~= nil then
+        return cmd .. " " .. file .. " " .. delimiter
+    elseif Utils.ends_with(file, ".csv") then
+        return cmd .. " " .. file
+    elseif Utils.ends_with(file, ".tsv") then
+        return cmd .. " " .. file .. " -t"
     end
-    return cmd .. " " .. file
+
+    return nil
 end
 
 ---@return boolean installed

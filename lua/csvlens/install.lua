@@ -9,7 +9,7 @@ Installer.install_path = vim.env.HOME .. "/.local/bin"
 ---@return string
 function Installer.release_file_url()
     local os, arch
-    local version = "0.5.1"
+    local version = "0.6.0"
 
     -- check pre-existence of required programs
     if vim.fn.executable("curl") == 0 or vim.fn.executable("tar") == 0 then

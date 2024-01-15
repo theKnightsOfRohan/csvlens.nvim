@@ -44,7 +44,7 @@ function Csvlens.open_csv()
         local file_to_open = vim.fn.expand("%:p")
         local constructed_cmd = Utils.construct_cmd("csvlens", file_to_open)
         if not constructed_cmd then
-            vim.api.nvim_err_writeln("ERROR: " .. file_to_open .. " is not a csv file.")
+            vim.api.nvim_err_writeln("ERROR: " .. file_to_open .. " is not a csv or tsv file.")
             return
         end
 
