@@ -1,8 +1,23 @@
 ---@class Installer
+---@field install_flow function
 ---@field install_path string
 ---@field release_file_url function
 ---@field install_csvlens function
 local Installer = {}
+
+function Installer:install_flow()
+    local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
+
+    if install == "y" then
+        print("Installing csvlens...")
+        self:install_csvlens()
+    elseif install ~= "n" then
+        print("csvlens can be installed at https://github.com/YS-L/csvlens")
+        print("If you have already installed csvlens, please add it to your PATH.")
+    else
+        print("Input not recognized.")
+    end
+end
 
 Installer.install_path = vim.env.HOME .. "/.local/bin"
 
