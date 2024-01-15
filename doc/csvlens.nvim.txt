@@ -75,7 +75,7 @@ You can also open a file with custom delimiters by passing them as string
 arguments to the command. For example, `:Csvlens "$"` would open the preview as
 if the open file were separated by `$`. All separators must be one character,
 with the exception of `\t`. However, this plugin will automatically use tabs as
-the delimiter if opening a csv file.
+the delimiter if opening a tsv file.
 
 
 ALTERNATIVES                          *csvlens.nvim-csvlens.nvim-alternatives*
