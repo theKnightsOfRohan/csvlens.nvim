@@ -2,6 +2,8 @@
 
 A way to easily preview CSV files directly in neovim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
 
+![Demo](assets/Csvlens_Demo.gif)
+
 ## Notes
 
 Requires Neovim version 0.7.0 or greater.
