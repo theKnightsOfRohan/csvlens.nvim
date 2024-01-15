@@ -1,6 +1,6 @@
 # csvlens.nvim
 
-A way to easily preview CSV files directly in neovim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
+A way to easily preview CSV files, as well as other separated filetypes, directly in neovim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
 
 https://github.com/theKnightsOfRohan/csvlens.nvim/assets/114779675/07cf5178-4231-4515-8c35-0b2027f76ae8
 
@@ -39,6 +39,8 @@ Due to the way the toggleterm API works, the csvlens preview config will take pr
 ## Usage
 
 This plugin is designed to be simple and easy to use. Open the csv file that you want to preview, then use the command `:Csvlens` to open a window with the preview of the opened table. The keyboard commands in this window are the same as csvlens's. Typing `H` in the preview will open up the help menu for csvlens, where you can find the keybindings.
+
+You can also open a file with custom delimiters by passing them as string arguments to the command. For example, `:Csvlens "$"` would open the preview as if the open file were separated by `$`. All separators must be one character, with the exception of `\t`. However, this plugin will automatically use tabs as the delimiter if opening a csv file.
 
 ## Alternatives
 
