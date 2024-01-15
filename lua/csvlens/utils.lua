@@ -13,10 +13,10 @@ end
 ---@param cmd string
 ---@param file string
 ---@param delimiter string
----@return string
+---@return string | nil
 function Utils.construct_cmd(cmd, file, delimiter)
     if delimiter ~= nil then
-        return cmd .. " " .. file .. " " .. delimiter
+        return cmd .. " " .. file .. " -d " .. delimiter
     elseif Utils.ends_with(file, ".csv") then
         return cmd .. " " .. file
     elseif Utils.ends_with(file, ".tsv") then

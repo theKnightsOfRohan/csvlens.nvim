@@ -23,11 +23,15 @@ function Csvlens.setup(config)
 
     Csvlens.verified = Utils.check_if_installed()
 
-    vim.api.nvim_create_user_command("Csvlens", Csvlens.open_csv, {})
+    vim.api.nvim_create_user_command("Csvlens", function(opts) Csvlens.open_csv(opts) end, {})
 end
 
+---@class CommandArgs
+---@field fargs string[] Should be a list of length 1, containing the delimiter
+
+---@param command_args CommandArgs
 ---@return nil
-function Csvlens.open_csv()
+function Csvlens.open_csv(command_args)
     if not Csvlens.verified then
         local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
 
@@ -41,10 +45,13 @@ function Csvlens.open_csv()
             print("Input not recognized.")
         end
     else
+        local delimiter = command_args.fargs[1]
         local file_to_open = vim.fn.expand("%:p")
-        local constructed_cmd = Utils.construct_cmd("csvlens", file_to_open)
+        local constructed_cmd = Utils.construct_cmd("csvlens", file_to_open, delimiter)
         if not constructed_cmd then
-            vim.api.nvim_err_writeln("ERROR: " .. file_to_open .. " is not a csv or tsv file.")
+            vim.api.nvim_err_writeln(
+                "ERROR: " .. file_to_open .. " is not a csv or tsv file, or a delimiter was not provided."
+            )
             return
         end
 
