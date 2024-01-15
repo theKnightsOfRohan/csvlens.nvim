@@ -40,7 +40,7 @@ Due to the way the toggleterm API works, the csvlens preview config will take pr
 
 This plugin is designed to be simple and easy to use. Open the csv file that you want to preview, then use the command `:Csvlens` to open a window with the preview of the opened table. The keyboard commands in this window are the same as csvlens's. Typing `H` in the preview will open up the help menu for csvlens, where you can find the keybindings.
 
-You can also open a file with custom delimiters by passing them as string arguments to the command. For example, `:Csvlens "$"` would open the preview as if the open file were separated by `$`. All separators must be one character, with the exception of `\t`. However, this plugin will automatically use tabs as the delimiter if opening a csv file.
+You can also open a file with custom delimiters by passing them as string arguments to the command. For example, `:Csvlens "$"` would open the preview as if the open file were separated by `$`. All separators must be one character, with the exception of `\t`. However, this plugin will automatically use tabs as the delimiter if opening a tsv file.
 
 ## Alternatives
 
