@@ -7,7 +7,7 @@ local Utils = {}
 ---@param str string the string we are testing
 ---@param ending string the ending we are testing for
 function Utils._ends_with(str, ending)
-    return ending == "" or str:sub(-#ending) == ending
+    return ending == "" or str:sub(- #ending) == ending
 end
 
 ---@param cmd string
@@ -26,9 +26,10 @@ function Utils._construct_cmd(cmd, file, delimiter)
     return nil
 end
 
+---@param exec string
 ---@return boolean installed
-function Utils._check_if_installed()
-    return vim.fn.executable("csvlens") == 1
+function Utils._check_if_installed(exec)
+    return vim.fn.executable(exec) == 1
 end
 
 return Utils
