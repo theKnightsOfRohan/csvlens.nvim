@@ -2,7 +2,7 @@
 
 A way to easily preview CSV files directly in neovim. Backed by [YS-L/csvlens](https://github.com/YS-L/csvlens).
 
-[![Demo](assets/Csvlens_Demo.mov)](https://github.com/theKnightsOfRohan/csvlens.nvim/blob/main/assets/Csvlens_Demo.mov)
+https://github.com/theKnightsOfRohan/csvlens.nvim/assets/114779675/07cf5178-4231-4515-8c35-0b2027f76ae8
 
 ## Notes
 
