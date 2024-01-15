@@ -1,9 +1,13 @@
-local M = {}
+---@class Installer
+---@field install_path string
+---@field release_file_url function
+---@field install_csvlens function
+local Installer = {}
 
-M.install_path = vim.env.HOME .. "/.local/bin"
+Installer.install_path = vim.env.HOME .. "/.local/bin"
 
 ---@return string
-function M.release_file_url()
+function Installer.release_file_url()
     local os, arch
     local version = "0.5.1"
 
@@ -41,7 +45,7 @@ function M.release_file_url()
     return "https://github.com/YS-L/csvlens/releases/download/v" .. version .. "/" .. filename
 end
 
-function M:install_csvlens()
+function Installer:install_csvlens()
     local release_url = self.release_file_url()
     if release_url == "" then
         return
@@ -88,4 +92,4 @@ function M:install_csvlens()
     vim.fn.jobstart(download_command, callbacks)
 end
 
-return M
+return Installer
