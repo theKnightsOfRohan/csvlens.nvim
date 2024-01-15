@@ -24,13 +24,13 @@ return {
 
 ### Config
 
-This plugin requires you to have [csvlens](https://github.com/YS-L/csvlens) installed and in your PATH. You can install it automatically with this plugin, and it will be installed in $HOME/.local/bin, or you could install it using your terminal package manager of choice.
+This plugin requires you to have [csvlens](https://github.com/YS-L/csvlens) installed and in your PATH. You can install it automatically with this plugin, and it will be installed in $HOME/.local/bin, or you could install it using your terminal package manager of choice. You can also manually specify the path of the executable as part of the configuration.
 
-A minimal config will contain the following:
+A default config will contain the following:
 ```lua
-require("toggleterm").setup(--[[ Put toggleterm-specific config here ]])
 require("csvlens").setup({
     direction = "float", -- "float" | "vertical" | "horizontal" |  "tab"
+    exec_path = "csvlens", -- You can specify the path to the executable if you wish. Otherwise, it will use the command.
 })
 ```
 
