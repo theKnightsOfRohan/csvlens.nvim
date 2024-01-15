@@ -1,8 +1,8 @@
 ---@class Installer
 ---@field install_flow function
----@field install_path string
----@field release_file_url function
----@field install_csvlens function
+---@field _install_path string
+---@field _release_file_url function
+---@field _install_csvlens function
 local Installer = {}
 
 function Installer:install_flow()
@@ -10,7 +10,7 @@ function Installer:install_flow()
 
     if install == "y" then
         print("Installing csvlens...")
-        self:install_csvlens()
+        self:_install_csvlens()
     elseif install ~= "n" then
         print("csvlens can be installed at https://github.com/YS-L/csvlens")
         print("If you have already installed csvlens, please add it to your PATH.")
@@ -19,10 +19,10 @@ function Installer:install_flow()
     end
 end
 
-Installer.install_path = vim.env.HOME .. "/.local/bin"
+Installer._install_path = vim.env.HOME .. "/.local/bin"
 
 ---@return string
-function Installer.release_file_url()
+function Installer._release_file_url()
     local os, arch
     local version = "0.6.0"
 
@@ -60,21 +60,21 @@ function Installer.release_file_url()
     return "https://github.com/YS-L/csvlens/releases/download/v" .. version .. "/" .. filename
 end
 
-function Installer:install_csvlens()
-    local release_url = self.release_file_url()
+function Installer:_install_csvlens()
+    local release_url = self._release_file_url()
     if release_url == "" then
         return
     end
 
     local download_command = { "curl", "-sL", "-o", "csvlens.tar.xz", release_url }
-    local extract_command = { "tar", "-zxf", "csvlens.tar.xz", "-C", self.install_path }
+    local extract_command = { "tar", "-zxf", "csvlens.tar.xz", "-C", self._install_path }
     local output_filename = "csvlens.tar.xz"
     ---@diagnostic disable-next-line: missing-parameter
-    local binary_path = vim.fn.expand(table.concat({ self.install_path, "csvlens" }, "/"))
+    local binary_path = vim.fn.expand(table.concat({ self._install_path, "csvlens" }, "/"))
 
     -- check for existing files / folders
-    if vim.fn.isdirectory(self.install_path) == 0 then
-        vim.loop.fs_mkdir(self.install_path, tonumber("777", 8))
+    if vim.fn.isdirectory(self._install_path) == 0 then
+        vim.loop.fs_mkdir(self._install_path, tonumber("777", 8))
     end
 
     ---@diagnostic disable-next-line: missing-parameter
