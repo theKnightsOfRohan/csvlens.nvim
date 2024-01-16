@@ -20,7 +20,6 @@ Csvlens._config = {
 Csvlens._verified = false
 
 ---@param new_config CsvlensConfig
----@return nil
 function Csvlens.setup(new_config)
     Csvlens.config = vim.tbl_deep_extend("force", Csvlens._config, new_config or {})
 

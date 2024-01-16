@@ -1,10 +1,11 @@
 ---@class Installer
 ---@field install_flow function
 ---@field _install_path string
----@field _release_file_url function
+---@field _construct_release_file_url function
 ---@field _install_csvlens function
 local Installer = {}
 
+---The user prompting flow for installing csvlens
 function Installer:install_flow()
     local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
 
@@ -21,8 +22,10 @@ end
 
 Installer._install_path = vim.env.HOME .. "/.local/bin"
 
+---This function will construct the url for the csvlens release file
+---This allows the plugin to be installed on any platform
 ---@return string
-function Installer._release_file_url()
+function Installer._construct_release_file_url()
     local os, arch
     local version = "0.6.0"
 
@@ -60,8 +63,9 @@ function Installer._release_file_url()
     return "https://github.com/YS-L/csvlens/releases/download/v" .. version .. "/" .. filename
 end
 
+---This function will install the csvlens binary, extract it, and remove the archive
 function Installer:_install_csvlens()
-    local release_url = self._release_file_url()
+    local release_url = self._construct_release_file_url()
     if release_url == "" then
         return
     end
