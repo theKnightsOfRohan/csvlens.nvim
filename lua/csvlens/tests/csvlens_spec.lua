@@ -20,4 +20,13 @@ describe("Setup ", function()
         csvlens.setup(expected)
         assert.are.same(csvlens.config, expected)
     end)
+
+    it("with partial configs", function()
+        local expected = {
+            direction = "vertical",
+            exec_path = "csvlens",
+        }
+        csvlens.setup({ direction = "vertical" })
+        assert.are.same(csvlens.config, expected)
+    end)
 end)
