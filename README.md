@@ -50,4 +50,4 @@ You can also open a file with custom delimiters by passing them as string argume
 
 ## Credits
 
-The automatic download script was taken from [ellisonleao/glow.nvim](https://github.com/ellisonleao/glow.nvim).
+The automatic download script was taken and built off of from [ellisonleao/glow.nvim](https://github.com/ellisonleao/glow.nvim).
