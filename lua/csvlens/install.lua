@@ -73,8 +73,7 @@ function Installer:_install_csvlens()
     local download_command = { "curl", "-sL", "-o", "csvlens.tar.xz", release_url }
     local extract_command = { "tar", "-zxf", "csvlens.tar.xz", "-C", self._install_path }
     local output_filename = "csvlens.tar.xz"
-    ---@diagnostic disable-next-line: missing-parameter
-    local binary_path = vim.fn.expand(table.concat({ self._install_path, "csvlens" }, "/"))
+    local binary_path = vim.fn.expand(self._install_path .. "/csvlens")
 
     -- check for existing files / folders
     if vim.fn.isdirectory(self._install_path) == 0 then
