@@ -1,6 +1,7 @@
 ---@class Installer
 ---@field install_flow function
 ---@field _install_path string
+---@field _set_install_path function
 ---@field _construct_release_file_url function
 ---@field _install_csvlens function
 local Installer = {}
@@ -21,6 +22,13 @@ function Installer:install_flow()
 end
 
 Installer._install_path = vim.env.HOME .. "/.local/bin"
+
+---This function will set the install path for csvlens
+---CURRENTLY FOR TESTING PURPOSES ONLY
+---@param path string
+function Installer:_set_install_path(path)
+    self._install_path = path
+end
 
 ---This function will construct the url for the csvlens release file
 ---This allows the plugin to be installed on any platform

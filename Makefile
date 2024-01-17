@@ -18,6 +18,7 @@ clean:
 	echo "===> Cleaning testing dependencies"
 	rm -rf /tmp/csvlens_test/toggleterm.nvim 
 	rm -rf /tmp/csvlens_test/plenary.nvim
+	rm -rf /tmp/csvlens_test/installer_test
 
 all:
 	make fmt lint test clean
