@@ -15,7 +15,7 @@ test:
 		-c "PlenaryBustedDirectory lua/csvlens/tests/ { minimal_init = 'lua/csvlens/tests/minimal_init.lua' }"
 
 clean:
-	echo "===> Cleaning"
+	echo "===> Cleaning testing dependencies"
 	rm -rf /tmp/toggleterm.nvim 
 	rm -rf /tmp/plenary.nvim
 
