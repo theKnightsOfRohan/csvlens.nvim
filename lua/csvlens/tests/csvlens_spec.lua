@@ -10,7 +10,7 @@ describe("Setup ", function()
             exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/",
         }
         csvlens.setup()
-        assert.are.same(csvlens.config, expected)
+        assert.are.same(csvlens._config, expected)
     end)
 
     it("with custom configs", function()
@@ -20,7 +20,7 @@ describe("Setup ", function()
             exec_install_path = "/tmp/csvlens/",
         }
         csvlens.setup(expected)
-        assert.are.same(csvlens.config, expected)
+        assert.are.same(csvlens._config, expected)
     end)
 
     it("with partial configs", function()
@@ -30,6 +30,6 @@ describe("Setup ", function()
             exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/",
         }
         csvlens.setup({ direction = "vertical" })
-        assert.are.same(csvlens.config, expected)
+        assert.are.same(csvlens._config, expected)
     end)
 end)
