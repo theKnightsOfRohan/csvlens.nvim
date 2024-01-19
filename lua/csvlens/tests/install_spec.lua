@@ -12,7 +12,7 @@ describe("Installer", function()
         Installer:_set_install_path(temp_install_path)
         assert.are.equal(Installer._install_path, temp_install_path)
 
-        local ok, msg = Installer:_install_csvlens()
+        local ok = Installer:_install_csvlens()
 
         local expected_exec_path = temp_install_path .. "csvlens"
         local expected_version = "csvlens 0.6.0\n"

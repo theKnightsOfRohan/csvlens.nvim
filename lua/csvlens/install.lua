@@ -18,7 +18,7 @@ function Installer:install_flow()
         else
             print(msg)
         end
-    elseif install ~= "n" then
+    elseif install == "n" then
         print("csvlens can be installed at https://github.com/YS-L/csvlens")
         print("If you have already installed csvlens, please add it to your PATH.")
     else

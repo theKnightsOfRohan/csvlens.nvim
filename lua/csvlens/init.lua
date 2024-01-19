@@ -12,9 +12,11 @@ local Csvlens = {}
 ---@class CsvlensConfig
 ---@field direction string "vertical" | "horizontal" | "tab" | "float",
 ---@field exec_path string
+---@field exec_install_path string directory to install the executable to, ends with /
 Csvlens._config = {
     direction = "float",
     exec_path = "csvlens",
+    exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/",
 }
 
 Csvlens._verified = false
@@ -24,6 +26,16 @@ function Csvlens.setup(new_config)
     Csvlens.config = vim.tbl_deep_extend("force", Csvlens._config, new_config or {})
 
     Csvlens._verified = Utils._check_if_installed(Csvlens._config.exec_path)
+
+    if not Csvlens._verified then
+        Csvlens._verified = Utils._check_if_installed(Csvlens._config.exec_install_path .. "csvlens")
+
+        if not Csvlens._verified then
+            Installer:_set_install_path(Csvlens._config.exec_install_path)
+        else
+            Csvlens._config.exec_path = Csvlens._config.exec_install_path .. "csvlens"
+        end
+    end
 
     vim.api.nvim_create_user_command("Csvlens", function(opts)
         Csvlens.open_csv(opts)
