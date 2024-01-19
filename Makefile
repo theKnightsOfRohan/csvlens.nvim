@@ -8,11 +8,7 @@ lint:
 
 test:
 	echo "===> Testing"
-	nvim \
-		--headless \
-		--noplugin \
-		-u lua/csvlens/tests/minimal_init.lua \
-		-c "PlenaryBustedDirectory lua/csvlens/tests/ { minimal_init = 'lua/csvlens/tests/minimal_init.lua' }"
+	nvim --headless --noplugin -u lua/csvlens/tests/minimal_init.lua -c "PlenaryBustedDirectory lua/csvlens/tests/ { minimal_init = 'lua/csvlens/tests/minimal_init.lua' }"
 
 clean:
 	echo "===> Cleaning testing dependencies"

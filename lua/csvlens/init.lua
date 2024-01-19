@@ -23,7 +23,7 @@ Csvlens._verified = false
 
 ---@param new_config CsvlensConfig
 function Csvlens.setup(new_config)
-    Csvlens.config = vim.tbl_deep_extend("force", Csvlens._config, new_config or {})
+    Csvlens._config = vim.tbl_deep_extend("force", Csvlens._config, new_config or {})
 
     Csvlens._verified = Utils._check_if_installed(Csvlens._config.exec_path)
 
@@ -61,7 +61,7 @@ function Csvlens.open_csv(command_args)
         return
     end
 
-    UI.open(constructed_cmd, Csvlens.config)
+    UI.open(constructed_cmd, Csvlens._config)
 end
 
 return Csvlens
