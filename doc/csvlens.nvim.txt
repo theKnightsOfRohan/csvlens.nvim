@@ -56,10 +56,14 @@ A default config will contain the following:
 >lua
     require("csvlens").setup({
         direction = "float", -- "float" | "vertical" | "horizontal" |  "tab"
-        exec_path = "csvlens", -- You can specify the path to the executable if you wish. Otherwise, it will use the command.
+        exec_path = "csvlens", -- You can specify the path to the executable if you wish. Otherwise, it will use the command in the PATH.
         exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/", -- directory to install the executable to if it's not found in the exec_path, ends with /
     })
 <
+
+The `exec_path` is prioritized as the executable location, with the
+`exec_install_path` as a backup. If it is not found in either location, the
+executable will be installed.
 
 Due to the way the toggleterm API works, the csvlens preview config will take
 precedence over the toggleterm config for csvlens’s previews.
