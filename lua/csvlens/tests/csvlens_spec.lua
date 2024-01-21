@@ -3,6 +3,15 @@ require("plenary.reload").reload_module("csvlens", true)
 local csvlens = require("csvlens")
 
 describe("Setup ", function()
+    before_each(function()
+        -- Force reset to defaults
+        csvlens._config = {
+            direction = "float",
+            exec_path = "csvlens",
+            exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/",
+        }
+    end)
+
     it("with default configs", function()
         local expected = {
             direction = "float",

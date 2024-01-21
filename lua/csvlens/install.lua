@@ -28,8 +28,6 @@ end
 
 Installer._install_path = vim.env.HOME .. "/.local/bin/"
 
----This function will set the install path for csvlens
----CURRENTLY FOR TESTING PURPOSES ONLY
 ---@param path string
 function Installer:_set_install_path(path)
     self._install_path = path
@@ -100,7 +98,6 @@ function Installer:_install_csvlens()
         vim.loop.fs_mkdir(self._install_path, tonumber("777", 8))
     end
 
-    ---@diagnostic disable-next-line: missing-parameter
     if vim.fn.filereadable(binary_path) == 1 then
         local success = vim.loop.fs_unlink(binary_path)
         if not success then
