@@ -19,6 +19,7 @@ return {
         "akinsho/toggleterm.nvim"
     },
     config = true,
+    opts = { --[[ Place your opts here ]] }
 }
 ```
 
