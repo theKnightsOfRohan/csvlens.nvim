@@ -7,19 +7,20 @@ local Utils = {}
 ---@param str string the string we are testing
 ---@param ending string the ending we are testing for
 function Utils._ends_with(str, ending)
-    return ending == "" or str:sub(- #ending) == ending
+    return ending == "" or str:sub(-#ending) == ending
 end
 
+---@param self Utils
 ---@param cmd string
 ---@param file string
 ---@param delimiter string
 ---@return string | nil
-function Utils._construct_cmd(cmd, file, delimiter)
+function Utils:_construct_cmd(cmd, file, delimiter)
     if delimiter ~= nil then
         return string.format("%s %s -d %s", cmd, file, delimiter)
-    elseif Utils._ends_with(file, ".csv") then
+    elseif self._ends_with(file, ".csv") then
         return string.format("%s %s", cmd, file)
-    elseif Utils._ends_with(file, ".tsv") then
+    elseif self._ends_with(file, ".tsv") then
         return string.format("%s %s -t", cmd, file)
     end
 

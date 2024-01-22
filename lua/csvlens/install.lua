@@ -7,6 +7,7 @@
 local Installer = {}
 
 ---The user prompting flow for installing csvlens
+---@param self Installer
 function Installer:install_flow()
     local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
 
@@ -28,6 +29,7 @@ end
 
 Installer._install_path = vim.env.HOME .. "/.local/bin/"
 
+---@param self Installer
 ---@param path string
 function Installer:_set_install_path(path)
     self._install_path = path
@@ -44,7 +46,7 @@ function Installer._construct_release_file_url()
 
     -- check pre-existence of required programs
     if vim.fn.executable("curl") == 0 or vim.fn.executable("tar") == 0 then
-        vim.api.nvim_err_writeln("ERROR: both curl and tar are required to install csvlens automatically")
+        vim.api.nvim_err_writeln("ERROR: both curl and tar are required to install the csvlens binary automatically")
         return "", "", ""
     end
 
@@ -78,6 +80,7 @@ function Installer._construct_release_file_url()
 end
 
 ---This function will install the csvlens binary, extract it, and remove the archive
+---@param self Installer
 ---@return boolean ok
 ---@return string err
 function Installer:_install_csvlens()

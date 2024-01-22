@@ -15,10 +15,10 @@ describe("Utils", function()
         local txt_file = "test.txt"
         local delimiter = ";"
 
-        assert.are.same("csvlens test.csv", Utils._construct_cmd(cmd, csv_file, nil))
-        assert.are.same("/usr/bin/csvlens test.csv -d ;", Utils._construct_cmd(exec_path, csv_file, delimiter))
-        assert.are.same("csvlens test.tsv -t", Utils._construct_cmd(cmd, tsv_file, nil))
-        assert.are.same("csvlens test.txt -d ;", Utils._construct_cmd(cmd, txt_file, delimiter))
+        assert.are.same("csvlens test.csv", Utils:_construct_cmd(cmd, csv_file, nil))
+        assert.are.same("/usr/bin/csvlens test.csv -d ;", Utils:_construct_cmd(exec_path, csv_file, delimiter))
+        assert.are.same("csvlens test.tsv -t", Utils:_construct_cmd(cmd, tsv_file, nil))
+        assert.are.same("csvlens test.txt -d ;", Utils:_construct_cmd(cmd, txt_file, delimiter))
     end)
 
     it("should be able to correctly check if a program is installed", function()
