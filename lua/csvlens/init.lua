@@ -21,25 +21,24 @@ Csvlens._config = {
 
 Csvlens._verified = false
 
----@param self Csvlens
 ---@param new_config CsvlensConfig
-function Csvlens:setup(new_config)
-    self._config = vim.tbl_deep_extend("force", self._config, new_config or {})
+function Csvlens.setup(new_config)
+    Csvlens._config = vim.tbl_deep_extend("force", Csvlens._config, new_config or {})
 
-    self._verified = Utils._check_if_installed(self._config.exec_path)
+    Csvlens._verified = Utils._check_if_installed(Csvlens._config.exec_path)
 
-    if not self._verified then
-        self._verified = Utils._check_if_installed(self._config.exec_install_path .. "csvlens")
+    if not Csvlens._verified then
+        Csvlens._verified = Utils._check_if_installed(Csvlens._config.exec_install_path .. "csvlens")
 
-        if not self._verified then
-            Installer:_set_install_path(self._config.exec_install_path)
+        if not Csvlens._verified then
+            Installer:_set_install_path(Csvlens._config.exec_install_path)
         else
-            self._config.exec_path = self._config.exec_install_path .. "csvlens"
+            Csvlens._config.exec_path = Csvlens._config.exec_install_path .. "csvlens"
         end
     end
 
     vim.api.nvim_create_user_command("Csvlens", function(opts)
-        self.open_csv(opts)
+        Csvlens.open_csv(opts)
     end, {})
 end
 
