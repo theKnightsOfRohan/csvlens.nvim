@@ -1,4 +1,4 @@
-*csvlens.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 January 22
+*csvlens.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 January 28
 
 ==============================================================================
 Table of Contents                             *csvlens.nvim-table-of-contents*
@@ -55,7 +55,7 @@ of the executable as part of the configuration.
 A default config will contain the following:
 
 >lua
-    require("csvlens"):setup({
+    require("csvlens").setup({
         direction = "float", -- "float" | "vertical" | "horizontal" |  "tab"
         exec_path = "csvlens", -- You can specify the path to the executable if you wish. Otherwise, it will use the command in the PATH.
         exec_install_path = vim.fn.stdpath("data") .. "/csvlens.nvim/", -- directory to install the executable to if it's not found in the exec_path, ends with /
