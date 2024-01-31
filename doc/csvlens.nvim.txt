@@ -1,4 +1,4 @@
-*csvlens.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 January 28
+*csvlens.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 January 31
 
 ==============================================================================
 Table of Contents                             *csvlens.nvim-table-of-contents*
