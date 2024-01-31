@@ -7,12 +7,12 @@ local UI = {}
 ---@param constructed_cmd string the command to run when opening the terminal
 ---@param config table the configuration for the terminal
 function UI.open(constructed_cmd, config)
-    local csvlens = Terminal:new({
+    local csvlens_window = Terminal:new({
         cmd = constructed_cmd,
         close_on_exit = true,
         direction = config.direction,
     })
-    csvlens:toggle()
+    csvlens_window:toggle()
 end
 
 return UI
