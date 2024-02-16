@@ -1,6 +1,6 @@
 local Terminal = require("toggleterm.terminal").Terminal
 
----@class UI
+---@class CsvlensUI
 ---@field open function
 local UI = {}
 

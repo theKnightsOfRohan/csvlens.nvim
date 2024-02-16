@@ -1,4 +1,4 @@
----@class Utils
+---@class CsvlensUtils
 ---@field _ends_with function
 ---@field _construct_cmd function
 ---@field _check_if_installed function
@@ -7,10 +7,10 @@ local Utils = {}
 ---@param str string the string we are testing
 ---@param ending string the ending we are testing for
 function Utils._ends_with(str, ending)
-    return ending == "" or str:sub(-#ending) == ending
+    return ending == "" or str:sub(- #ending) == ending
 end
 
----@param self Utils
+---@param self CsvlensUtils
 ---@param cmd string
 ---@param file string
 ---@param delimiter string

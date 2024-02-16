@@ -1,4 +1,4 @@
----@class Installer
+---@class CsvlensInstaller
 ---@field install_flow function
 ---@field _install_path string
 ---@field _set_install_path function
@@ -7,7 +7,7 @@
 local Installer = {}
 
 ---The user prompting flow for installing csvlens
----@param self Installer
+---@param self CsvlensInstaller
 function Installer:install_flow()
     local install = vim.fn.input("csvlens not found in PATH. Install automatically? (y/n): ")
 
@@ -29,7 +29,7 @@ end
 
 Installer._install_path = vim.env.HOME .. "/.local/bin/"
 
----@param self Installer
+---@param self CsvlensInstaller
 ---@param path string
 function Installer:_set_install_path(path)
     self._install_path = path
@@ -80,7 +80,7 @@ function Installer._construct_release_file_url()
 end
 
 ---This function will install the csvlens binary, extract it, and remove the archive
----@param self Installer
+---@param self CsvlensInstaller
 ---@return boolean ok
 ---@return string err
 function Installer:_install_csvlens()

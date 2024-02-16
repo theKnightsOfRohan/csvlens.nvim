@@ -37,8 +37,8 @@ function Csvlens.setup(new_config)
         end
     end
 
-    vim.api.nvim_create_user_command("Csvlens", function(opts)
-        Csvlens.open_csv(opts)
+    vim.api.nvim_create_user_command("Csvlens", function(args)
+        Csvlens.open_csv(args)
     end, {})
 end
 
