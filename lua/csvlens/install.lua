@@ -42,7 +42,7 @@ end
 ---@return string foldername
 function Installer._construct_release_file_url()
     local os, arch
-    local version = "0.6.0"
+    local version = "0.7.0"
 
     -- check pre-existence of required programs
     if vim.fn.executable("curl") == 0 or vim.fn.executable("tar") == 0 then

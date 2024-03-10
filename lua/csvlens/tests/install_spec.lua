@@ -15,7 +15,7 @@ describe("Installer", function()
         local ok = Installer:_install_csvlens()
 
         local expected_exec_path = temp_install_path .. "csvlens"
-        local expected_version = "csvlens 0.6.0\n"
+        local expected_version = "csvlens 0.7.0\n"
 
         assert.are.equal(ok, true)
         assert.are.equal(vim.fn.executable(expected_exec_path), 1)
