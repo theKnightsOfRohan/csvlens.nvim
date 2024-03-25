@@ -7,7 +7,7 @@ local Utils = {}
 ---@param str string the string we are testing
 ---@param ending string the ending we are testing for
 function Utils._ends_with(str, ending)
-    return ending == "" or str:sub(- #ending) == ending
+    return ending == "" or str:sub(-#ending) == ending
 end
 
 ---@param self CsvlensUtils
