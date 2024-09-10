@@ -16,6 +16,8 @@ end
 ---@param delimiter string
 ---@return string | nil
 function Utils:_construct_cmd(cmd, file, delimiter)
+    cmd = vim.fn.fnameescape(cmd)
+    file = vim.fn.fnameescape(file)
     if delimiter ~= nil then
         return string.format("%s %s -d %s", cmd, file, delimiter)
     elseif self._ends_with(file, ".csv") then
